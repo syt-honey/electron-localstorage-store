@@ -1,6 +1,6 @@
 <h1><em><samp>electron-localstorage-store</samp></em></h1>
 
-A React hook for sharing and synchronization of data through `localStorage` in multi-window (Also work well in electron multi-window).
+A React hook for sharing and synchronization of data through `localStorage` in multi-window (Also works well in electron multi-window).
 
 ## Install
 

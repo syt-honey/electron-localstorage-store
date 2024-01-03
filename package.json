@@ -2,10 +2,10 @@
     "name": "electron-localstorage-store",
     "version": "0.0.1",
     "type": "module",
-    "description": "A React hook for sharing and synchronization of data through `localStorage` in multi-window",
+    "description": "A React hook for sharing and synchronization of data through `localStorage` in multi-window.",
     "license": "MIT",
-    "repository": "",
-    "homepage": "",
+    "repository": "https://github.com/syt-honey/electron-localstorage-store",
+    "homepage": "https://github.com/syt-honey/electron-localstorage-store",
     "author": {
         "name": "syt-honey",
         "email": "honeysyt@foxmail.com",
