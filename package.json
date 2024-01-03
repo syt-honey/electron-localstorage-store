@@ -1,0 +1,58 @@
+{
+    "name": "electron-localstorage-store",
+    "version": "0.0.1",
+    "type": "module",
+    "description": "A React hook for sharing and synchronization of data through `localStorage` in multi-window",
+    "license": "MIT",
+    "repository": "",
+    "homepage": "",
+    "author": {
+        "name": "syt-honey",
+        "email": "honeysyt@foxmail.com",
+        "url": "https://syt-honey.com"
+    },
+    "exports": {
+        "types": "./index.d.ts",
+        "default": "./index.js"
+    },
+    "keywords": [
+        "electron",
+        "multi-window",
+        "multi-windows",
+        "multiple-window",
+        "react",
+        "hook",
+        "localStorage",
+        "persistent",
+        "state",
+        "hooks",
+        "local storage",
+        "store"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "lint": "eslint --cache --format=stylish --ext=.ts ./",
+        "test": "pnpm run build && pnpm run lint && if [[ -z $CI ]]; then vitest --run --coverage.enabled --coverage.reporter=text --coverage.reporter=html --coverage.reporter=clover --coverage.provider=istanbul; else vitest --run; fi",
+        "release": "pnpm run build && np"
+    },
+    "peerDependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@testing-library/react-hooks": "^8.0.1",
+        "@types/react": "^18.2.43",
+        "@types/react-dom": "^18.2.17",
+        "@typescript-eslint/eslint-plugin": "^6.14.0",
+        "@typescript-eslint/parser": "^6.14.0",
+        "@vitest/coverage-istanbul": "^1.1.1",
+        "eslint": "^8.55.0",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.5",
+        "jsdom": "^23.0.1",
+        "react-test-renderer": "^18.2.0",
+        "superjson": "^2.2.1",
+        "typescript": "^5.2.2",
+        "vitest": "^1.1.1"
+    }
+}
