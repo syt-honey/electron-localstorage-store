@@ -1,6 +1,6 @@
 {
     "name": "electron-localstorage-store",
-    "version": "0.0.3",
+    "version": "1.0.0",
     "type": "module",
     "description": "A React hook for sharing and synchronization of data through `localStorage` in multi-window.",
     "license": "MIT",
