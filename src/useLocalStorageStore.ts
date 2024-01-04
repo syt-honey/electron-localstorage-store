@@ -11,7 +11,7 @@ export type LocalStorageStoreOptions<T> = {
     // if defaultValue is not `undefined`, type `T` must be an `object` inclding `{}`, `{ // properties }`
     defaultValue?: T
 }
-export type LocalStorageStore<T> = [Partial<T>, (newOptions: T) => void, () => void]
+export type LocalStorageStore<T> = [T, (newOptions: Partial<T>) => void, () => void]
 
 export default useLocalStorageStore
 
@@ -19,7 +19,7 @@ export function useLocalStorageStore<T>(
     options: LocalStorageStoreOptions<T>
 ): LocalStorageStore<T> {
     // this hook is only supported in browser
-    if (!localStorageStore.isBrowser()) {
+    if (!isBrowser()) {
         throw new TypeError(
             '[electron-localstorage-store]: not supported in non-browser environment.'
         )
@@ -49,8 +49,8 @@ function useBrowserLocalStorageStore<T>(key: string, defaultValue?: T): LocalSto
     const store = useMemo(() => parse(_rawStore, LOCAL_DEFAULT_VALUE) as T, [_rawStore])
 
     const updateStore = useCallback(
-        (newOptions: T): void => {
-            // When key is reference-safe, is an object, and is not equal to store, we update item.
+        (newOptions: Partial<T>): void => {
+            // When key is reference-safe and is an object we update options.
             if (isSafeJSONObject(newOptions) && isObject(newOptions)) {
                 const opts = stringify({ ...store, ...newOptions })
                 localStorage.setItem(key, opts)
@@ -67,7 +67,7 @@ function useBrowserLocalStorageStore<T>(key: string, defaultValue?: T): LocalSto
     const resetStore = useCallback((): void => {
         if (defaultValue) {
             updateStore(defaultValue)
-        } else if (store) {
+        } else if (store && !isEmptyObject(store)) {
             updateStore(store)
         }
     }, [defaultValue, store, updateStore])
@@ -131,9 +131,4 @@ function parse(str: string, defaultValue?: unknown): unknown {
     } catch {
         return defaultValue ?? {}
     }
-}
-
-export const localStorageStore = {
-    isBrowser,
-    useLocalStorageStore
 }
